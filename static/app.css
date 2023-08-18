@@ -2,6 +2,9 @@ html {
     font-family: Arial;
 }
 
+.body {
+    background: linear-gradient(178.6deg, rgb(20, 36, 50) 11.8%, rgb(124, 143, 161) 83.8%) fixed;
+}
 .sidebar {
     height: 100%; /* Full-height: remove this if you want "auto" height */
     width: 13%; /* Set the width of the sidebar */
@@ -9,8 +12,8 @@ html {
     z-index: 1; /* Stay on top */
     top: 0; /* Stay at the top */
     left: 0;
-    background-color: #1d3030;
-    color:  #ffffe6;
+    background-color: rgba(0,0,0,.5);
+    color: #fff;
     overflow-x: hidden; /* Disable horizontal scroll */
     padding-top: 15px;
     padding-left: 10px;
@@ -33,15 +36,15 @@ html {
 .main {
     margin-left: 210px; /* Same as the width of the sidebar */
     padding: 20px;
+    color: white;
 }
 
 .avatar {
-    display: inline-block;
-    width: 80%;
-    height: 150px;
+    width: 100%;
     border-radius: 50%;
-    margin: 15px;;
 }
+
+
 
 .grid-container {
     display: grid;

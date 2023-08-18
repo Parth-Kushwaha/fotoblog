@@ -1,7 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
 <h3>UPLOAD PROFILE PHOTO</h3>
-<p>GO BACK TO <a href="{% url 'home'  %}">HOME</a> </p>
 <form method='post' enctype="multipart/form-data">
     {{form.as_p}}
     {% csrf_token %}

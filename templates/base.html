@@ -17,9 +17,15 @@
                 <h4>Hey! {{user.username | capfirst}}</h4>
 
                 {% if user.profile_photo %}
-                    <img class= 'avatar' src={{user.profile_photo.url}}>
+                    <div class='profile-container'>
+                        <img class= 'avatar' src={{user.profile_photo.url}}>
+                    </div>
+                    
                 {% else %}
-                    <img class='avatar' src="{% static 'images/default_profile.png' %}">
+                    <div>
+                        <img class='avatar' src="{% static 'images/default_profile.png' %}">
+                    </div>
+                   
                 {% endif %}
 
                 <p><a href="{% url 'home' %}">HOME</a></p>
