@@ -10,5 +10,5 @@ class User(AbstractUser):
         (SUBSCRIBER,'Subscriber'),
     )
     
-    profile_pohoto=models.ImageField()
+    profile_photo=models.ImageField()
     role=models.CharField(max_length=30, choices=ROLE_CHOICES)
