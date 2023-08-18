@@ -62,3 +62,13 @@ def signUp(request):
             return redirect(settings.LOGIN_REDIRECT_URL)
     return render(request, 'authentication/signup.html', context={'form':form})
 
+def profilePhoto(request):
+    form=forms.ProfilePhoto(instance=request.user)
+    if request.method=='POST':
+        form=forms.ProfilePhoto(request.POST, request.FILES,instance=request.user)
+        if form.is_valid():
+            form.save()
+            return redirect('home')
+    return render(request, 'authentication/profile_photo.html',context={'form':form})
+
+

@@ -34,7 +34,8 @@ urlpatterns = [
     path('logout/',authentication.views.logout_user,name='logout'),
     path('home/',blog.views.home_page,name='home'),
     path('signup/',authentication.views.signUp,name='signup'),
-    path('photo-upload/', blog.views.photo_upload,name='photo_upload')
+    path('photo/upload/', blog.views.photo_upload,name='photo_upload'),
+    path('photo/profile/', authentication.views.profilePhoto,name='profile_photo')
 ]
 
 if settings.DEBUG:

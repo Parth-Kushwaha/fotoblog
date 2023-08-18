@@ -1,4 +1,20 @@
 {% extends 'base.html' %}
 {% block content %}
-<h2>THIS IS HOME PAGE</h2>
+
+<div>
+    <h2>THIS IS HOME PAGE</h2>
+    <h3>Welcome, {{user.username | capfirst}}</h3>
+    <a href="{% url 'profile_photo'  %}">UPLOAD/UPDATE YOUR PROFILE PHOTO</a>
+   <p><a href="{% url 'photo_upload'  %}">UPLOAD A PHOTO</a></p>
+</div>
+<div>
+    <h3>YOUR PHOTOS</h3>
+    {% for photo in photos %}
+        <img src={{photo.image.url}}>
+    <p>{{photo.caption}}</p>
+</div>
+
+{% endfor %}
+
+
 {% endblock content %}
