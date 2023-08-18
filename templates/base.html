@@ -5,15 +5,34 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel='stylesheet' href="{% static 'app.css' %}">
-        
+
         <title>FOTOBLOG</title>
     </head>
-    <body>
-        <h1>FOTOBLOG</h1>
-        {% block content %} {% endblock content %}
+    <body class='body'>
+        <div class='sidebar'>
+            <h1>FOTOBLOG</h1>
 
-        {% if user.is_authenticated %}
-            <p>You are loggin in as {{user.username}}, Click here to <a href="{% url 'logout' %}">LOGOUT</a></p>
-        {% endif %}
+            {% if user.is_authenticated %}
+
+                <h4>Hey! {{user.username | capfirst}}</h4>
+
+                {% if user.profile_photo %}
+                    <img class= 'avatar' src={{user.profile_photo.url}}>
+                {% else %}
+                    <img class='avatar' src="{% static 'images/default_profile.png' %}">
+                {% endif %}
+
+                <p><a href="{% url 'home' %}">HOME</a></p>
+                <p><a href='{% url "profile_photo" %}' >Change Profile Photo</a></p>
+                <p><a href='{% url "photo_upload" %}'>Upload Photo</a></p>
+                
+                <p><a href="{% url 'logout' %}">LOGOUT</a></p>
+
+            {% endif %}
+        </div>
+        
+        <div class='main'>
+            {% block content %} {% endblock content %}
+        </div>
     </body>
 </html>
