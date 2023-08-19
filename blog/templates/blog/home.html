@@ -4,15 +4,16 @@
 <div>
     <h2>THIS IS HOME PAGE</h2>
 </div>
-    <h3>YOUR PHOTOS</h3>
+<h3>YOUR PHOTOS</h3>
     <div class='grid-container'>
-        {% for photo in photos %}
-            <div class='post'>
-                <img src={{photo.image.url}}>
-                <p>{{photo.caption}}</p>
-            </div>
-        {% endfor %}
+    {% for photo in photos %}
+        <div class='post'>
+            <img src={{photo.image.url}}>
+            <p>{{photo.caption}}</p>
+    {% endfor %}  
     </div>
+    
+</div>
     
 
 
