@@ -13,7 +13,7 @@ class Photo(models.Model):
 
     def resize_image(self):
         image=Image.open(self.image)
-        image.thumnail(self.IMAGE_MAX_SIZE)
+        image.thumbnail(self.IMAGE_MAX_SIZE)
         image.save(self.image.path)
     
     def save(self, *args, **kwargs):
