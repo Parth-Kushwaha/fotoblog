@@ -38,6 +38,8 @@ urlpatterns = [
     path('photo/profile/', authentication.views.profilePhoto,name='profile_photo'),
     path('createpost/', blog.views.blog_photo_upload,name='createpost'),
     path('viewblog/<int:blog_id>',blog.views.view_blog,name='view-blog'),
+    path('viewblog/<int:blog_id>/edit', blog.views.edit_blog,name='editBlog'),
+    path('photo/uploadmultiple',blog.views.create_multiple_photos, name='multiplePhotos')
 ]
 
 if settings.DEBUG:

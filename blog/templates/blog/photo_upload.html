@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
 <h2>UPLOAD PHOTO FORM</h2>
+<p><a href="{% url 'multiplePhotos' %}">UPLOAD MULTIPLE PHOTOS</a></p>
 <form method='post' enctype="multipart/form-data">
     {{form.as_p}}
     {% csrf_token %}

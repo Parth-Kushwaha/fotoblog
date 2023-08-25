@@ -1,7 +1,10 @@
 {% extends 'base.html' %}
 {% block content %}
 <h3>{{blog.title}}</h3>
-<img src="{{blog.photo.image.url}}">
-<p>{{blog.photo.caption}}</p>
+<p><a href="{% url 'editBlog' blog.id %}">Edit Blog</a></p>
+<div>
+    <img src="{{blog.photo.image.url}}">
+    <p>{{blog.photo.caption}}</p>
+</div>
 <p>{{blog.content}}</p>
 {% endblock %}

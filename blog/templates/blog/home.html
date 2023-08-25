@@ -10,11 +10,25 @@
         <div class='post'>
             <img src={{photo.image.url}}>
             <p>{{photo.caption}}</p>
-    {% endfor %}  
-    </div>
+      
+        </div>
+    {% endfor %}
     
 </div>
-    
+<h2>Blogs</h2>
+<div class="grid-container">
+    {% for blog in blogs %}
+        <div class="post">
+            <a href="{% url 'view-blog' blog.id %}">
+                <h4>Blog Post: {{ blog.title }}</h4>
+                <div class='post'>
+                    <img  src="{{ blog.photo.image.url }}">
+                </div>
+                
+            </a>
+        </div>
+    {% endfor %}
+</div>
 
 
 
