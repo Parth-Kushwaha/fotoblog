@@ -11,7 +11,7 @@ def home_page(request):
     return render(request, 'blog/home.html',context={'photos':photos,'blogs':blogs})
 
 @login_required
-@permission_required("blog.add_photo", raise_exception=True)
+@permission_required("blog.add_blog")
 def photo_upload(request):
     form = forms.PhotoForm()
     if request.method=='POST':
@@ -22,6 +22,8 @@ def photo_upload(request):
         return redirect('home')
     return render(request, 'blog/photo_upload.html', context={'form':form})
 
+@login_required
+@permission_required("blog.delete_blog", raise_exception=True)
 def delete_photo(request, photo_id):
     photo=models.Photo.objects.get(id=photo_id)
     if len(photo.image) > 0:
@@ -31,6 +33,7 @@ def delete_photo(request, photo_id):
     return redirect('home')
     
 @login_required
+@permission_required("blog.add_blog")
 def blog_photo_upload(request):
     blog_form=forms.BlogForm()
     photo_form=forms.PhotoForm()
@@ -61,6 +64,7 @@ def view_blog(request,blog_id):
     return render(request, 'blog/view_blog.html',context={'blog':blog})
 
 @login_required
+@permission_required("blog.change_blog")
 def edit_blog(request, blog_id):
     blog=get_object_or_404(models.Blog, id=blog_id)
     edit_form=forms.BlogForm(instance=blog)
@@ -82,7 +86,7 @@ def edit_blog(request, blog_id):
         'delete_form':delete_form
     }
     return render(request, 'blog/edit_blog.html', context)
-@login_required
+
 def create_multiple_photos(request):
     PhotoFormSet=formset_factory(forms.PhotoForm, extra=5)
     formset=PhotoFormSet()

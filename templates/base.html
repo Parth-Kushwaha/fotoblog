@@ -29,11 +29,18 @@
                 {% endif %}
 
                 <p><a href="{% url 'home' %}">HOME</a></p>
-                <p><a href="{% url 'createpost' %}">Create Post</a></p>
+
+                {% if perms.blog.add_blog %}
+                    <p><a href="{% url 'createpost' %}">Create Post</a></p>
+                {% endif %}
+                
+
                 <p><a href='{% url "profile_photo" %}' >Change Profile Photo</a></p>
-                {% if perms.blog.add_photo %}
+
+                {% if perms.blog.add_blog %}
                     <p><a href='{% url "photo_upload" %}'>Upload Photo</a></p>
                 {% endif %}
+
                 <p><a href="{% url 'logout' %}">LOGOUT</a></p>
 
             {% endif %}

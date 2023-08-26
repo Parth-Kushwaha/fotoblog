@@ -1,7 +1,10 @@
 {% extends 'base.html' %}
 {% block content %}
 <h3>{{blog.title}}</h3>
-<p><a href="{% url 'editBlog' blog.id %}">Edit Blog</a></p>
+{% if perms.blog.change_blog %}
+    <p><a href="{% url 'editBlog' blog.id %}">Edit Blog</a></p>
+{% endif %}
+
 <div>
     <img src="{{blog.photo.image.url}}">
     <p>{{blog.photo.caption}}</p>
