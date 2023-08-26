@@ -1,8 +1,8 @@
 from django.shortcuts import render,redirect,get_object_or_404
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required,permission_required
 from django.forms import formset_factory
 from . import forms,models
-
+import os
 
 @login_required
 def home_page(request):
@@ -11,6 +11,7 @@ def home_page(request):
     return render(request, 'blog/home.html',context={'photos':photos,'blogs':blogs})
 
 @login_required
+@permission_required("blog.add_photo", raise_exception=True)
 def photo_upload(request):
     form = forms.PhotoForm()
     if request.method=='POST':
@@ -20,6 +21,14 @@ def photo_upload(request):
         photo.save()
         return redirect('home')
     return render(request, 'blog/photo_upload.html', context={'form':form})
+
+def delete_photo(request, photo_id):
+    photo=models.Photo.objects.get(id=photo_id)
+    if len(photo.image) > 0:
+        os.remove(photo.image.path)
+
+    photo.delete()
+    return redirect('home')
     
 @login_required
 def blog_photo_upload(request):

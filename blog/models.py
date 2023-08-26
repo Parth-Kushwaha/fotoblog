@@ -17,7 +17,7 @@ class Photo(models.Model):
         image.save(self.image.path)
     
     def save(self, *args, **kwargs):
-        super.save(*args, **kwargs)
+        super().save(*args, **kwargs)
         self.resize_image()
 
 

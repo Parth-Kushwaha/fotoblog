@@ -35,6 +35,7 @@ urlpatterns = [
     path('home/',blog.views.home_page,name='home'),
     path('signup/',authentication.views.signUp,name='signup'),
     path('photo/upload/', blog.views.photo_upload,name='photo_upload'),
+    path('photo-delete/<int:photo_id>',blog.views.delete_photo,name='photo-delete'),
     path('photo/profile/', authentication.views.profilePhoto,name='profile_photo'),
     path('createpost/', blog.views.blog_photo_upload,name='createpost'),
     path('viewblog/<int:blog_id>',blog.views.view_blog,name='view-blog'),
